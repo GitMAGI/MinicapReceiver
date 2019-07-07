@@ -1,6 +1,9 @@
 ::C:\android-sdk\tools\android-ndk-r14b\
 ::C:\android-sdk\platform-tools\adb.exe -s 07ea9707
 
+::To Restart The Device
+::\android-sdk\platform-tools\adb.exe shell am broadcast -a android.intent.action.BOOT_COMPLETED
+
 C:\android-sdk\platform-tools\adb.exe -s 07ea9707 forward tcp:1717 localabstract:minicap
 
 C:\android-sdk\platform-tools\adb.exe -s 07ea9707 push "libs/armeabi-v7a/minicap" "/data/local/tmp/"

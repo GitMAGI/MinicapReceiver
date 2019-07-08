@@ -3,7 +3,7 @@ import log00 as log_lib
 import time
 import struct
 
-def tcp_receiver(remote_addr, remote_port, chunk_size = 4096, sleeping_time = 0.0001):    
+def tcp_receiver(remote_addr, remote_port, sleeping_time = 0.0001):    
     try:
         # Create a TCP/IP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -47,8 +47,6 @@ def tcp_receiver(remote_addr, remote_port, chunk_size = 4096, sleeping_time = 0.
             frame_data = sock.recv(frame_size)
             amount_received += len(frame_data)
             log_lib.debug("Received a frame of size of {} B. Expected frame size was {}B. Total amount data received so far is {} B".format(len(frame_data), frame_size, amount_received))
-            
-            
             
             debug_counter += 1
             if debug_counter > 30:

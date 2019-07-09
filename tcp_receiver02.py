@@ -7,8 +7,7 @@ def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.000001):
     start_time = time.time()
 
     while not stop_event.is_set():
-        log_lib.debug("Current Queue size {}".format(queue.qsize())) 
-        
+        log_lib.debug("Current Queue size {}".format(queue.qsize()))        
         frame_size_bytes = sock.recv(4)
         frame_size = int.from_bytes(frame_size_bytes, byteorder='little', signed=False)
         time.sleep(sleeping_time)
@@ -16,8 +15,7 @@ def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.000001):
         log_lib.debug("Received a frame of size of {} B. Expected frame size was {} B".format(len(frame_data), frame_size))            
         queue.put(frame_data)
         log_lib.debug("Added data to Queue. Current Queue size {}".format(queue.qsize()))
-        time.sleep(sleeping_time)    
-        time.sleep(sleeping_time) 
+        time.sleep(sleeping_time)
 
     elapsed_time = time.time() - start_time
     log_lib.info("Completed in %s" % utils_lib.elapsed_time_string(elapsed_time))

@@ -6,6 +6,7 @@ import log00 as log_lib
 import test00
 import test01
 import test02
+import test03
 
 basename = os.path.basename(__file__)
 
@@ -21,6 +22,7 @@ def main():
     #test00.test()
     test01.test()
     #test02.test()
+    #test03.test()
 
     elapsed_time = time.time() - start_time
     log_lib.info("Completed in %s" % utils_lib.elapsed_time_string(elapsed_time))

@@ -2,7 +2,7 @@ import log00 as log_lib
 import utils00 as utils_lib
 import time
 
-def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.000001):    
+def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.001):    
     log_lib.debug("Starting ...")
     start_time = time.time()
 
@@ -10,7 +10,7 @@ def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.000001):
         log_lib.debug("Current Queue size {}".format(queue.qsize()))        
         frame_size_bytes = sock.recv(4)
         frame_size = int.from_bytes(frame_size_bytes, byteorder='little', signed=False)
-        time.sleep(sleeping_time)
+        #time.sleep(sleeping_time)
         frame_data = sock.recv(frame_size)
         log_lib.debug("Received a frame of size of {} B. Expected frame size was {} B".format(len(frame_data), frame_size))            
         queue.put(frame_data)

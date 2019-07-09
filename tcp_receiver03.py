@@ -6,7 +6,7 @@ import log00 as log_lib
 import utils00 as utils_lib
 
 class TCPReceiverThread(Thread):
-    def __init__(self, socket, queue, sleeping_time = 0.00001):
+    def __init__(self, socket, queue, sleeping_time = 0.001):
         Thread.__init__(self)
         self.queue = queue
         self.socket = socket

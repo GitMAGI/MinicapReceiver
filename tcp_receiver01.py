@@ -1,11 +1,10 @@
 import socket
 import log00 as log_lib
 import time
-import struct
 import numpy as np
 import cv2
 
-def tcp_receiver(remote_addr, remote_port, sleeping_time = 0.000001):    
+def tcp_receiver(remote_addr, remote_port, sleeping_time = 0.001):    
     try:
         # Create a TCP/IP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

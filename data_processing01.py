@@ -8,7 +8,7 @@ import numpy as np
 import cv2
 
 class TCPProcessingThread(Thread):
-    def __init__(self, socket, queue, sleeping_time = 0.00001):
+    def __init__(self, socket, queue, sleeping_time = 0.001):
         Thread.__init__(self)
         self.queue = queue
         self.socket = socket
@@ -28,11 +28,11 @@ class TCPProcessingThread(Thread):
 
                 frame_data = queue.get(block = True)
                 log_lib.debug("Pulled a frame of size of {} B from Queue. Current Queue size {}".format(len(frame_data), queue.qsize()))                
-                frame = cv2.imdecode(np.fromstring(frame_data, dtype = np.uint8), -1) 
-                cv2.wait(0)
-                cv2.imshow('Window', frame)            
+                frame = cv2.imdecode(np.fromstring(frame_data, dtype = np.uint8), -1)                 
+                cv2.imshow('Window', frame)  
+                cv2.wait(1)          
 
-                time.sleep(sleeping_time)
+                #time.sleep(sleeping_time)
 
             except Exception as e:
                 log_lib.fatal(str(e)) 

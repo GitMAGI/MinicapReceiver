@@ -55,7 +55,7 @@ def test():
          
         processing_worker_stop.set()
         log_lib.info("Processing Thread terminating ...")  
-        receiver_worker.join()
+        processing_worker.join()
         log_lib.info("Processing Thread is done!")
 
         time.sleep(0.2)

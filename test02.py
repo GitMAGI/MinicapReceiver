@@ -7,7 +7,7 @@ import data_processing01 as processing_lib
 import log00 as log_lib
 import utils00 as utils_lib
 
-main_loop_sleeping_time = 0.00001
+main_loop_sleeping_time = 0.001
 
 def test():
     log_lib.debug("Starting ...")
@@ -45,6 +45,10 @@ def test():
         time.sleep(main_loop_sleeping_time)
 
         # Thread for Processing/Displaying frames
+
+        time.sleep(main_loop_sleeping_time)
+
+        # Thread for Displaying frames
 
         time.sleep(main_loop_sleeping_time)
 

@@ -48,7 +48,7 @@ def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.001):
     #print(end_indexes)
     #print(len(end_indexes))
 
-    for i in range(0, len(start_indexes) - 1, 1):
+    for i in range(0, len(start_indexes), 1):
         start = start_indexes[i]
         end = end_indexes[i] - 1
         frame_data = input_data[start:end]

@@ -20,9 +20,9 @@ def main():
     #time.sleep(0.234)  
 
     #test00.test()
-    test01.test()
+    #test01.test()
     #test02.test()
-    #test03.test()
+    test03.test()
 
     elapsed_time = time.time() - start_time
     log_lib.info("Completed in %s" % utils_lib.elapsed_time_string(elapsed_time))

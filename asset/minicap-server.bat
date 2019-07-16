@@ -39,10 +39,10 @@ C:\android-sdk\platform-tools\adb.exe -s 07ea9707 shell chmod 777 /data/local/tm
 
 ::PORTRAIT with Quality Manually set and Performance Options
 :: real_with x real_height @ virtual_with x virtual_height / display_orientation_degrees
-::C:\android-sdk\platform-tools\adb.exe -s 07ea9707 shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P 1080x1920@270x480/0 -Q 60 -S -t
+::C:\android-sdk\platform-tools\adb.exe -s 07ea9707 shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P 1080x1920@270x480/0 -Q 60 -S
 
 ::LANDSCAPET with Quality Manually set and Performance Options
 :: real_with x real_height @ virtual_with x virtual_height / display_orientation_degrees
-C:\android-sdk\platform-tools\adb.exe -s 07ea9707 shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P 1920x1080@480x270/0 -Q 60 -S -t
+C:\android-sdk\platform-tools\adb.exe -s 07ea9707 shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P 1920x1080@480x270/0 -Q 60 -S
 
 C:\android-sdk\platform-tools\adb.exe -s 07ea9707 forward --remove tcp:1717

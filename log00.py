@@ -3,11 +3,17 @@ import datetime
 import sys
 import inspect
 
+min_level = -1
+
 def _log_line(type, caller_filename, caller_function, data):
     try:
+        if type.value < min_level:
+            return
+
         current_time_str = str(datetime.datetime.now())
         type_str = type.name.capitalize()
         line = "{} | {} | {} @ {} >>> {}".format(current_time_str, type_str, caller_function, caller_filename, data)
+        #line = "{}\t{}\t{}\t{}\t{}".format(current_time_str, type_str, caller_function, caller_filename, data)
         print("{}".format(line))
     except:
         print("Erorr during the log operation")

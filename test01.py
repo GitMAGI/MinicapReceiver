@@ -36,7 +36,17 @@ def test():
         virtual_width = int.from_bytes(globalHeader[14:17], byteorder='little', signed=False)
         virtual_height = int.from_bytes(globalHeader[18:21], byteorder='little', signed=False)
         display_orientation = globalHeader[22]
-        quirk_flag = globalHeader[23]    
+        quirk_flag = globalHeader[23]
+
+        log_lib.info("Information from the Server: version {}".format(version))
+        log_lib.info("Information from the Server: header_size {}".format(header_size))
+        log_lib.info("Information from the Server: pid {}".format(pid))
+        log_lib.info("Information from the Server: real_width {}".format(real_width))
+        log_lib.info("Information from the Server: real_height {}".format(real_height))
+        log_lib.info("Information from the Server: virtual_width {}".format(virtual_width))
+        log_lib.info("Information from the Server: virtual_height {}".format(virtual_height))
+        log_lib.info("Information from the Server: display_orientation {}".format(display_orientation))
+        log_lib.info("Information from the Server: quirk_flag {}".format(quirk_flag))
 
         window_name = str(pid) + " " + str(virtual_width) + "x" + str(virtual_height)
 
@@ -45,7 +55,7 @@ def test():
 
         # Thread for retrieving data from TCP
         receiver_worker_stop = Event()
-        receiver_worker = Thread(target=receiver_lib.tcp_receiver, args=(receiver_worker_stop, qin, sock,))
+        receiver_worker = Thread(target=receiver_lib.tcp_receiver, args=(receiver_worker_stop, q_in, sock,))
         receiver_worker.setDaemon(False)
         receiver_worker.start()
 

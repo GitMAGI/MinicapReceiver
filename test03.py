@@ -8,7 +8,7 @@ import tcp_receiver_fake00 as receiver_lib
 import data_processing00 as processing_lib
 
 def test():
-    log_lib.debug("Starting ...")
+    log_lib.info("Starting ...")
     start_time = time.time()
 
     main_loop_sleeping_time = 0.001

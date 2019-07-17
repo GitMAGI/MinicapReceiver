@@ -7,6 +7,7 @@ import test00
 import test01
 import test02
 import test03
+import test04
 
 basename = os.path.basename(__file__)
 log_lib.min_level = 1
@@ -23,12 +24,15 @@ def main():
     #test00.test()
 
     # Receive, process and display from devices!
-    test01.test()
+    #test01.test()
 
     #test02.test()
 
     # FAKE RECEIVER (Reads a Video from file)
     #test03.test()
+
+    # Test Logging on different streams
+    test04.test()
 
     elapsed_time = time.time() - start_time
     log_lib.info("Completed in %s" % utils_lib.elapsed_time_string(elapsed_time))

@@ -10,7 +10,7 @@ import utils00 as utils_lib
 main_loop_sleeping_time = 0.001
 
 def test():
-    log_lib.debug("Starting ...")
+    log_lib.info("Starting ...")
     start_time = time.time()
 
     try:

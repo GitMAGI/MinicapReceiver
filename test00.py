@@ -4,7 +4,7 @@ import utils00 as utils_lib
 import tcp_receiver01 as receiver_lib
 
 def test():
-    log_lib.debug("Starting ...")
+    log_lib.info("Starting ...")
     start_time = time.time()
 
     remote_addr = 'localhost'

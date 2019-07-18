@@ -24,15 +24,16 @@ def main():
     #test00.test()
 
     # Receive, process and display from devices!
-    #test01.test()
+    test01.test()
 
+    # Not Implemented yet!
     #test02.test()
 
     # FAKE RECEIVER (Reads a Video from file)
     #test03.test()
 
     # Test Logging on different streams
-    test04.test()
+    #test04.test()
 
     elapsed_time = time.time() - start_time
     log_lib.info("Completed in %s" % utils_lib.elapsed_time_string(elapsed_time))

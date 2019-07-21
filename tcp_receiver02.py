@@ -33,6 +33,14 @@ def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.0001):
             log_lib.error("Bad data recevid on socket. Got no bytes for an Expected Frame of size {}".format(frame_size))
         
         log_lib.debug("Received a frame of size of {} B. Expected frame size was {} B".format(len(frame_data), frame_size))
+
+        # Give just last frame to the processor
+        while queue.qsize() > 0:
+            try:
+                queue.get(False)
+            except Empty:
+                continue
+
         queue.put(frame_data)
         log_lib.debug("Added data to Queue. Current Queue size {}".format(queue.qsize()))
 

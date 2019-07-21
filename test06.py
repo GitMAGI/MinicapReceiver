@@ -18,8 +18,8 @@ def test():
 
     receiver_worker_sleeping_time = 0.0001
     processing_worker_sleeping_time = 0.0001
-    viewer_worker_sleeping_time = 0.0001
-    monitoring_worker_sleeping_time = 0.0001
+    viewer_worker_sleeping_time = 0.02
+    monitoring_worker_sleeping_time = 0.01
 
     remote_addr = 'localhost'
     remote_port = 1717

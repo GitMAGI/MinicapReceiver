@@ -2,8 +2,7 @@ import time
 from log02 import Log
 import utils00 as utils_lib
 
-log_lib = Log()
-log_lib.min_level = 0
+log_lib = Log.get_instance()
 
 def test():
     log_lib.info("Starting ...")
@@ -13,7 +12,7 @@ def test():
         log_lib.info("Test Line Test Line Test Line Test Line Line Test Line Test Line 1", overwrite=True)
         log_lib.error("Test Line Test Line Test Line Test Line Line Test Line Test Line 2")
         log_lib.debug("Test Line Test Line Test Line Test Line Line Test Line Test Line 3", overwrite=True)
-        log_lib.fatal("Test Line Test Line Test Line Test Line Line Test Line Test Line 4")
+        log_lib.fatal("Test Line Test Line Test Line Test Line Line Test Line Test Line 4", overwrite=True)
         log_lib.info("Test Line Test Line Test Line Test Line Line Test Line Test Line 5", overwrite=True)
         log_lib.debug("Test Line Test Line Test Line Test Line Line Test Line Test Line 6", overwrite=True)
         log_lib.warning("Test Line Test Line Test Line Test Line Line Test Line Test Line 7", overwrite=True)
@@ -40,6 +39,16 @@ def test():
         log_lib.info("Test Line Test Line Test Line Test Line Line Test Line Test Line 28", overwrite=True)
         log_lib.error("Test Line Test Line Test Line Test Line Line Test Line Test Line 29")
         log_lib.fatal("Test Line Test Line Test Line Test Line Line Test Line Test Line 30")
+
+        for i in range(1, 101, 5):
+            utils_lib.print_progress_bar(i, 100)
+            time.sleep(0.02)
+
+        log_lib.info("Test Line Test Line Test Line Test Line Line Test Line Test Line 31")
+        log_lib.info("Test Line Test Line Test Line Test Line Line Test Line Test Line 32", overwrite=True)
+        log_lib.info("Test Line Test Line Test Line Test Line Line Test Line Test Line 33", overwrite=True)
+        log_lib.info("Test Line Test Line Test Line Test Line Line Test Line Test Line 34")
+        log_lib.info("Test Line Test Line Test Line Test Line Line Test Line Test Line 35", overwrite=True)
 
     except KeyboardInterrupt:
         log_lib.info("Keyboard interrupt received. Terminating ...")

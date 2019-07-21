@@ -1,8 +1,10 @@
-import log00 as log_lib
+from log02 import Log
 import utils00 as utils_lib
 import time
 
-def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.001):    
+log_lib = Log.get_instance()
+
+def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.0001):    
     log_lib.debug("Starting ...")
     start_time = time.time()
 

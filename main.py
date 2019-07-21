@@ -2,16 +2,18 @@ import time
 import os
 import sys
 import utils00 as utils_lib
-import log00 as log_lib
+from log02 import Log
 import test00
 import test01
 import test02
 import test03
 import test04
 import test05
+import test06
 
 basename = os.path.basename(__file__)
-log_lib.min_level = 1
+log_lib = Log.get_instance()
+log_lib.set_min_level(1)
 
 def main():
     log_lib.info("Starting ...")
@@ -37,7 +39,10 @@ def main():
     #test04.test()
 
     # Test Logging with replace line
-    test05.test()
+    #test05.test()
+
+    # Test Receive, process and display from devices, showing Queue status
+    test06.test()
 
     elapsed_time = time.time() - start_time
     log_lib.info("Completed in %s" % utils_lib.elapsed_time_string(elapsed_time))

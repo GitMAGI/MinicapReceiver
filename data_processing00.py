@@ -1,11 +1,13 @@
-import log00 as log_lib
+from log02 import Log
 import utils00 as utils_lib
 import time
 from queue import Queue
 import numpy as np
 import cv2
 
-def frame_viewer(stop_event, queue, sleeping_time = 0.001):
+log_lib = Log.get_instance()
+
+def frame_viewer(stop_event, queue, sleeping_time = 0.0001):
     log_lib.debug("Starting ...")
     start_time = time.time()
 

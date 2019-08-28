@@ -1,7 +1,7 @@
 from log02 import Log
 import utils00 as utils_lib
 import time
-from queue import Queue, Empty
+from queue import Queue, LifoQueue, Empty
 import numpy as np
 import cv2
 
@@ -52,11 +52,12 @@ def frame_processor(stop_event, queue_in, queue_out, sleeping_time = 0.0001):
             frame = cv2.imdecode(np.fromstring(frame_data, dtype = np.uint8), -1)
 
             # Give just last frame to the viewer
-            while queue_out.qsize() > 0:
-                try:
-                    queue_out.get(False)
-                except Empty:
-                    continue
+            if type(queue_out) is LifoQueue:
+                while queue_out.qsize() > 0:
+                    try:
+                        queue_out.get(False)
+                    except Empty:
+                        continue
 
             queue_out.put(frame)
             log_lib.debug("Added data to Output Queue. Current Output Queue size {}".format(queue_out.qsize()))

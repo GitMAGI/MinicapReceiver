@@ -8,8 +8,6 @@ import test01
 import test02
 import test03
 import test04
-import test05
-import test06
 
 basename = os.path.basename(__file__)
 log_lib = Log.get_instance()

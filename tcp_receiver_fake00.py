@@ -1,9 +1,11 @@
-import log00 as log_lib
+from log02 import Log
 import utils00 as utils_lib
 import time
 import os
 import subprocess
 import re
+
+log_lib = Log.get_instance()
 
 def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.001):
     log_lib.info("Starting ...")
@@ -11,8 +13,8 @@ def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.001):
 
     input_path = 'input'
     input_filename = '20190827_215900.mp4'
-    w = 480*2
-    h = 270*2
+    w = 480
+    h = 270
 
     # Command for extract a sequence of jpgs from a video file
     # ffmpeg -i .\input\video.mp4 -c:v mjpeg -f image2pipe -s Width x Height pipe:1

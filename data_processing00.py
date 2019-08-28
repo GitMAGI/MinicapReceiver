@@ -11,6 +11,13 @@ def frame_viewer(stop_event, queue, sleeping_time = 0.0001):
     log_lib.debug("Starting ...")
     start_time = time.time()
 
+    w = int(1920/5)
+    h = int(1080/5)
+
+    windowName = 'Window'
+    cv2.namedWindow(windowName, cv2.WINDOW_NORMAL)   
+    cv2.resizeWindow(windowName, w, h)
+
     while not stop_event.is_set():
         try:
             log_lib.debug("Trying to pull data from Queue. Current Queue size {}".format(queue.qsize()))
@@ -20,8 +27,8 @@ def frame_viewer(stop_event, queue, sleeping_time = 0.0001):
 
             frame = queue.get(block = True)
             time.sleep(sleeping_time)
-            log_lib.debug("Pulled a frame of size of {} B from Queue. Current Queue size {}".format(len(frame), queue.qsize()))            
-            cv2.imshow('Window', frame)
+            log_lib.debug("Pulled a frame of size of {} B from Queue. Current Queue size {}".format(len(frame), queue.qsize()))                     
+            cv2.imshow(windowName, frame)            
             cv2.waitKey(1)
 
         except Exception as e:

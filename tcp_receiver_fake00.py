@@ -13,14 +13,14 @@ def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.001):
 
     input_path = 'input'
     input_filename = '20190827_215900.mp4'
-    w = 480
-    h = 270
+    w = int(1920/5)
+    h = int(1080/5)
 
     # Command for extract a sequence of jpgs from a video file
     # ffmpeg -i .\input\video.mp4 -c:v mjpeg -f image2pipe -s Width x Height pipe:1
     input_fullfilename = os.path.join(input_path, input_filename)
     cmd = [
-        'ffmpeg', '-i', input_fullfilename, '-c:v', 'mjpeg', '-f', 'image2pipe', '-s', '{}x{}'.format(w, h), 'pipe:1'
+        'ffmpeg', '-i', input_fullfilename, '-c:v', 'mjpeg', '-q:v', '1', '-f', 'image2pipe', '-s', '{}x{}'.format(w, h), 'pipe:1'
     ]
     input_process = subprocess.Popen(cmd, shell = True, stdout = subprocess.PIPE)
     [input_data, input_err] = input_process.communicate(input = input_process)
@@ -50,7 +50,7 @@ def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.001):
 
     for i in range(0, len(start_indexes), 1):
         start = start_indexes[i]
-        end = end_indexes[i] - 1
+        end = end_indexes[i]
         frame_data = input_data[start:end]
         frames.append(frame_data)
 

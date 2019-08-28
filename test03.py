@@ -13,8 +13,8 @@ def test():
 
     main_loop_sleeping_time = 0.001
     try:
-        q_in = Queue()
-        q_out = Queue()
+        q_in = LifoQueue()
+        q_out = LifoQueue()
 
         # Thread for retrieving data from TCP
         receiver_worker_stop = Event()

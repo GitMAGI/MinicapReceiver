@@ -1,11 +1,13 @@
-import log00 as log_lib
+from log02 import Log
 import utils00 as utils_lib
 import time
-from queue import Queue
+from queue import Queue, Empty
 import numpy as np
 import cv2
 
-def frame_viewer(stop_event, queue, sleeping_time = 0.001):
+log_lib = Log.get_instance()
+
+def frame_viewer(stop_event, queue, sleeping_time = 0.0001):
     log_lib.debug("Starting ...")
     start_time = time.time()
 
@@ -34,7 +36,7 @@ def frame_viewer(stop_event, queue, sleeping_time = 0.001):
     elapsed_time = time.time() - start_time
     log_lib.info("Completed in %s" % utils_lib.elapsed_time_string(elapsed_time))
 
-def frame_processor(stop_event, queue_in, queue_out, sleeping_time = 0.001):
+def frame_processor(stop_event, queue_in, queue_out, sleeping_time = 0.0001):
     log_lib.debug("Starting ...")
     start_time = time.time()
 
@@ -47,7 +49,15 @@ def frame_processor(stop_event, queue_in, queue_out, sleeping_time = 0.001):
 
             frame_data = queue_in.get(block = True)
             log_lib.debug("Pulled a frame of size of {} B from Input Queue. Current Input Queue size {}".format(len(frame_data), queue_in.qsize()))         
-            frame = cv2.imdecode(np.fromstring(frame_data, dtype = np.uint8), -1) 
+            frame = cv2.imdecode(np.fromstring(frame_data, dtype = np.uint8), -1)
+
+            # Give just last frame to the viewer
+            while queue_out.qsize() > 0:
+                try:
+                    queue_out.get(False)
+                except Empty:
+                    continue
+
             queue_out.put(frame)
             log_lib.debug("Added data to Output Queue. Current Output Queue size {}".format(queue_out.qsize()))
 

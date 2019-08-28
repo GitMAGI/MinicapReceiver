@@ -2,15 +2,18 @@ import time
 import os
 import sys
 import utils00 as utils_lib
-import log00 as log_lib
+from log02 import Log
 import test00
 import test01
 import test02
 import test03
 import test04
+import test05
+import test06
 
 basename = os.path.basename(__file__)
-log_lib.min_level = 1
+log_lib = Log.get_instance()
+log_lib.set_min_level(1)
 
 def main():
     log_lib.info("Starting ...")
@@ -26,6 +29,7 @@ def main():
     # Receive, process and display from devices!
     #test01.test()
 
+    # Not Implemented yet!
     #test02.test()
 
     # FAKE RECEIVER (Reads a Video from file)

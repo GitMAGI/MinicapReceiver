@@ -6,7 +6,7 @@ import subprocess
 import re
 
 def tcp_receiver(stop_event, queue, sock, sleeping_time = 0.001):
-    log_lib.debug("Starting ...")
+    log_lib.info("Starting ...")
     start_time = time.time()
 
     input_path = 'input'

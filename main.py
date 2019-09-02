@@ -38,7 +38,8 @@ def main():
     #test04.test()
 
     # Test OpenCV
-    test07.easy_drawings()
+    #test07.easy_drawings()
+    test07.lines_detection()
 
     elapsed_time = time.time() - start_time
     log_lib.info("Completed in %s" % utils_lib.elapsed_time_string(elapsed_time))

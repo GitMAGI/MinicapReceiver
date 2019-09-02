@@ -3,6 +3,7 @@ import numpy as np
 import math
 import sys
 import matplotlib.pylab as plt
+import os
 
 def easy_drawings():
     window_name = "Easy Drawings"
@@ -74,5 +75,32 @@ def easy_drawings():
     cv2.polylines(img_base, [pts], False, (208, 128, 80), 2, 4, 0)
 
     cv2.imshow(window_name, img_base)
+    cv2.waitKey(0)
+    cv2.destroyWindow(window_name)
+
+def lines_detection():
+    window_name = "Lines Detection"
+
+    input_path = "input"    
+    input_filename = "20190827_215900.jpg"
+    input_fullfilename = os.path.join(input_path, input_filename)
+
+    frame = cv2.imread(input_fullfilename)    
+    h, w, _ = frame.shape
+    frame_g = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    frame_b = cv2.GaussianBlur(frame_g, (15, 15), 8)
+    #frame_b = cv2.bilateralFilter(frame_g, 9 , 75, 75)   
+    frame_edges = cv2.Canny(frame_b, 50, 65)
+
+    frame_proc = frame_edges
+
+    to_plot = cv2.hconcat([cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY), frame_proc])
+
+    h_plot = h//4
+    w_plot = 2 * w//4
+
+    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)    
+    cv2.resizeWindow(window_name, w_plot, h_plot)    
+    cv2.imshow(window_name, to_plot)
     cv2.waitKey(0)
     cv2.destroyWindow(window_name)
